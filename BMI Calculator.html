@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+</head>
+
+<style>
+    
+    .cont{
+       text-align: center;
+       border: 1px solid grey;
+       padding: 20px;
+       width: 60%;
+
+    }
+</style>
+
+<body>
+    <div class="cont">
+        <h2>BMI CALCULATOR</h2>
+
+        <label for="">Enter Your Weight (kg):</label>
+
+        <input type="text" id="weight" placeholder="enter your weight">
+<br>
+<br>
+
+
+        <label for="">Enter Your Height (m):</label>
+
+        <input type="text" id="height" placeholder="enter your height">
+
+        <br><br>
+
+        <button onclick="myWeight()">Calculate</button>
+
+        <div class="result"> </div>
+    </div>
+</body>
+
+
+<script>
+
+
+
+
+
+function myWeight(){
+    let result=document.querySelector(".result")
+
+    let weight = parseFloat(document.getElementById("weight").value);
+    let height = parseFloat(document.getElementById("height").value);
+
+
+if(isNaN(weight) || isNaN(height) || weight<=0 || height<=0){
+    document.getElementById("result").innerText="please enter a valid age or height";
+}
+
+var  bmi=(weight/(height*height))*10000;
+
+var bmiCategory;
+
+if(bmi<=18.4){
+    bmiCategory="UnderWeight"  
+}
+else if(bmi>=18.5 && bmi<= 24.9){
+bmiCategory="Normal Weight"
+}
+
+else if(bmi>=25 && bmi<=29.9){
+    bmiCategory="Overweight"
+}
+
+else if(bmi>=30){
+    bmiCategory="Obese"
+}
+
+
+result.innerText= "Your BMI is" +  " "  +bmi.toFixed(1) +"  " + bmiCategory
+}
+
+
+
+
+</script>
+</html>
